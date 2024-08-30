@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car CRUD App</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/alpinejs" defer></script>
+  <script src="alpineData.js" defer></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+ 
+  <div x-data="nissan">
+    <h1 x-text="title"></h1>
+
+    <button x-on:click="fetchCars">Fetch Car List</button>
+
+    <h2>Add a New Car</h2>
+    <form x-on:submit.prevent="addCar">
+      <input type="text" placeholder="Color" x-model="newCar.color" required>
+      <input type="text" placeholder="Make" x-model="newCar.make" required>
+      <input type="text" placeholder="Model" x-model="newCar.model" required>
+      <input type="text" placeholder="Registration Number" x-model="newCar.reg_number" required>
+      <button type="submit">Add Car</button>
+    </form>
+
+    <h2>Car List</h2>
+    <ul>
+      <template x-for="car in cars" :key="car.reg_number">
+        <li>
+          <span x-text="car.color"></span>,
+          <span x-text="car.make"></span>,
+          <span x-text="car.model"></span>,
+          <span x-text="car.reg_number"></span>
+          <button x-on:click="deleteCar(car.reg_number)">Delete</button>
+        </li>
+      </template>
+    </ul>
+  </div>
+</body>
+</html>

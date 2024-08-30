@@ -1,0 +1,19 @@
+##count Nissan from CK
+http://localhost:3007/api/nissansFromCK?search=Nissan
+
+### list of cars data
+http://localhost:3007/api/cars
+
+### deleted cars
+http://localhost:3007/api/cars/:reg_number
+
+### Add cars
+POST http://localhost:3007/api/cars
+Content-Type: application/json
+
+{
+  "color": "Purple",
+  "make": "Ford",
+  "model": "Ranger",
+  "reg_number": "CK 37565"
+}
